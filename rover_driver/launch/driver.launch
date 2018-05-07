@@ -1,0 +1,12 @@
+<launch>
+    <node pkg="rosserial_python" type="serial_node.py" name="rover_serial" />
+    <node pkg="usb_cam" type="usb_cam_node" name="usb_cam_node" output="screen">
+        <param name="image_width" type="int" value="640" />
+        <param name="iamge_height" type="int" value="480" />
+        <param name="camera_frame_id" type="string" value="cam" />
+        <param name="pixel_format" type="string" value="yuyv" />
+        <param name="video_device" type="string" value="/dev/video0" />
+    </node>
+    <rosparam command="load" file="$(find rover_driver)/launch/rover_base.yaml" />
+    <node pkg="rover_driver" type="rover_driver_node" name="rover_driver_node" output="screen"/>
+</launch>
