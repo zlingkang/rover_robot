@@ -54,11 +54,11 @@ class RoverRobot
 
 void RoverRobot::motor1SpeedCB(const std_msgs::Float64::ConstPtr& msg)
 {
-    motor1_measured_speed_ = msg->data;
+    motor1_measured_speed_ = msg->data/4.0;
 }
 void RoverRobot::motor2SpeedCB(const std_msgs::Float64::ConstPtr& msg)
 {
-    motor2_measured_speed_ = msg->data;
+    motor2_measured_speed_ = msg->data/4.0;
 }
 
 void RoverRobot::velCmdCB(const geometry_msgs::Twist& msg)
