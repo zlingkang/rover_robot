@@ -1,5 +1,7 @@
 <launch>
-    <node pkg="rosserial_python" type="serial_node.py" name="rover_serial" />
+    <node pkg="rosserial_python" type="serial_node.py" name="rover_serial">
+        <param name="port" value="/dev/ttyUSB1"/>
+    </node>
     <node pkg="usb_cam" type="usb_cam_node" name="usb_cam_node" output="screen">
         <param name="image_width" type="int" value="640" />
         <param name="iamge_height" type="int" value="480" />
