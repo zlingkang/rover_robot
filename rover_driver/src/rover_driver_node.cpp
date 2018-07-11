@@ -4,6 +4,8 @@
 #include <geometry_msgs/Twist.h>
 #include <std_msgs/Float64.h>
 
+const double CTRL_SCALE = 4.0;
+
 class RoverRobot
 {
     public:
@@ -54,18 +56,18 @@ class RoverRobot
 
 void RoverRobot::motor1SpeedCB(const std_msgs::Float64::ConstPtr& msg)
 {
-    motor1_measured_speed_ = msg->data/4.0;
+    motor1_measured_speed_ = msg->data/CTRL_SCALE;
 }
 void RoverRobot::motor2SpeedCB(const std_msgs::Float64::ConstPtr& msg)
 {
-    motor2_measured_speed_ = msg->data/4.0;
+    motor2_measured_speed_ = msg->data/CTRL_SCALE;
 }
 
 void RoverRobot::velCmdCB(const geometry_msgs::Twist& msg)
 {
     geometry_msgs::Twist trgt_twist = msg;
-    double v_linear = trgt_twist.linear.x;
-    double vth = trgt_twist.angular.z;
+    double v_linear = trgt_twist.linear.x * CTRL_SCALE;
+    double vth = trgt_twist.angular.z * CTRL_SCALE;
 
 	ROS_INFO_STREAM("[ROV] vel_cmd: " << v_linear << " " << vth);
 	
