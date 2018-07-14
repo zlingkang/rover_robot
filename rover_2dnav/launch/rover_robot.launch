@@ -1,5 +1,4 @@
 <launch>
-    <include file="$(find ydlidar)/launch/lidar.launch)"/>
+    <include file="$(find ydlidar)/launch/lidar.launch"/>
     <include file="$(find rover_driver)/launch/driver.launch"/>
-    <include file="$(find hector_slam)/launch/hector_mapping.launch"/>
 </launch>

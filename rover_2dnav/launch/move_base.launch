@@ -1,15 +1,13 @@
 <launch>
-<!-- Run the map server  
-<node name="map_server" pkg="map_server" type="map_server" args="$(find rover_2dnav)/launch/my_map.pgm my_map_resolution"/>--> 
+<node name="map_server" pkg="map_server" type="map_server" args="$(find rover_2dnav)/launch/mymap.yaml"/> 
 
-<!--- Run AMCL --> 
 <include file="$(find amcl)/examples/amcl_diff.launch" /> <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
 
-<rosparam file="$(find rover_2dnav)/costmap_common_params.yaml" command="load" ns="global_costmap" /> 
-<rosparam file="$(find rover_2dnav)/costmap_common_params.yaml" command="load" ns="local_costmap" /> 
-<rosparam file="$(find rover_2dnav)/local_costmap_params.yaml" command="load" /> 
-<rosparam file="$(find rover_2dnav)/global_costmap_params.yaml" command="load" /> 
-<rosparam file="$(find rover_2dnav)/base_local_planner_params.yaml" command="load" />
+<rosparam file="$(find rover_2dnav)/launch/costmap_common_params.yaml" command="load" ns="global_costmap" /> 
+<rosparam file="$(find rover_2dnav)/launch/costmap_common_params.yaml" command="load" ns="local_costmap" /> 
+<rosparam file="$(find rover_2dnav)/launch/local_costmap_params.yaml" command="load" /> 
+<rosparam file="$(find rover_2dnav)/launch/global_costmap_params.yaml" command="load" /> 
+<rosparam file="$(find rover_2dnav)/launch/base_local_planner_params.yaml" command="load" />
 
 </node>
 
