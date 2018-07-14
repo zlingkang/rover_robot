@@ -1,7 +1,7 @@
 <launch>
 <node name="map_server" pkg="map_server" type="map_server" args="$(find rover_2dnav)/launch/mymap.yaml"/> 
 
-<include file="$(find amcl)/examples/amcl_diff.launch" /> <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+<include file="$(find rover_2dnav)/launch/rover_amcl.launch" /> <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
 
 <rosparam file="$(find rover_2dnav)/launch/costmap_common_params.yaml" command="load" ns="global_costmap" /> 
 <rosparam file="$(find rover_2dnav)/launch/costmap_common_params.yaml" command="load" ns="local_costmap" /> 
