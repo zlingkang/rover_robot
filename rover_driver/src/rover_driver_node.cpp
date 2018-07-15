@@ -151,7 +151,7 @@ RoverRobot::RoverRobot()
     motor2_speed_sub_ = node_->subscribe("/motor2_measured_speed", 100, &RoverRobot::motor2SpeedCB, this);
     odom_pub_ = node_->advertise<nav_msgs::Odometry>("/odom", 50);
 
-    velocity_cmd_sub_ = node_->subscribe("/vel_cmd", 100, &RoverRobot::velCmdCB, this);
+    velocity_cmd_sub_ = node_->subscribe("/cmd_vel", 100, &RoverRobot::velCmdCB, this);
     motor1_speed_pub_ = node_->advertise<std_msgs::Float64>("/motor1", 50);
     motor2_speed_pub_ = node_->advertise<std_msgs::Float64>("/motor2", 50);
 
